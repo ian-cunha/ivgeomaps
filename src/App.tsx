@@ -4,8 +4,8 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Footer from './components/Footer';
-import ConsultingServices from './components/Consulting';
 import Geo from './components/Geo';
+import Consulting from './components/Consulting';
 
 const MainContent = styled.main`
   min-height: 100vh;
@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <Header />
       <MainContent>
         <Hero />
-        <ConsultingServices />
+        <Consulting />
         <Geo />
         <About />
       </MainContent>

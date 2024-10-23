@@ -8,8 +8,8 @@ const theme = {
     primary: '#2197F3',
     secondary: '#6c757d',
     text: '#333',
-    background: '#fafafa',
-    cardBackground: '#fff',
+    bg: '#fafafa',
+    cardBg: '#fff',
     highlight: '#0056b3',
   },
   typography: {
@@ -19,14 +19,14 @@ const theme = {
   },
 };
 
-const AboutSection = styled.section`
+const Section = styled.section`
   padding: 80px 20px;
-  background-color: ${props => props.theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.bg};
   text-align: center;
 `;
 
-const AboutTitle = styled.h2`
-  color: ${props => props.theme.colors.primary};
+const Title = styled.h2`
+  color: ${({ theme }) => theme.colors.primary};
   margin-bottom: 30px;
   position: relative;
   &:after {
@@ -37,86 +37,95 @@ const AboutTitle = styled.h2`
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: ${props => props.theme.colors.highlight};
+    background-color: ${({ theme }) => theme.colors.highlight};
   }
 `;
 
-const AboutContent = styled.div`
+const Content = styled.div`
   max-width: 800px;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+
   @media (max-width: 768px) {
     width: 100%;
     padding: 0 15px;
   }
 `;
 
-const AboutImage = styled.img`
+const Img = styled.img`
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 25px;
-  border: 3px solid ${props => props.theme.colors.highlight};
+  border: 3px solid ${({ theme }) => theme.colors.highlight};
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.05);
   }
+
   @media (max-width: 768px) {
     width: 150px;
     height: 150px;
   }
 `;
 
-const AboutParagraph = styled.p`
-  font-size: ${props => props.theme.typography.p};
-  color: ${props => props.theme.colors.text};
+const Para = styled.p`
+  font-size: ${({ theme }) => theme.typography.p};
+  color: ${({ theme }) => theme.colors.text};
   margin: 15px 0;
   line-height: 1.7;
   text-align: justify;
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
-    text-align: justify;
   }
 `;
 
-const SocialLinks = styled.div`
+const Links = styled.div`
   margin-top: 20px;
   a {
-    color: ${props => props.theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     margin: 0 10px;
     font-size: 3rem;
     transition: color 0.3s ease;
+
     &:hover {
-      color: ${props => props.theme.colors.highlight};
+      color: ${({ theme }) => theme.colors.highlight};
     }
   }
 `;
 
 const About = () => (
   <ThemeProvider theme={theme}>
-    <AboutSection id="about">
-      <AboutTitle>Sobre Mim</AboutTitle>
-      <AboutContent>
-        <AboutImage src={photo} alt="Foto de Ivanise" />
-        <SocialLinks>
+    <Section id="about">
+      <Title>Sobre Mim</Title>
+      <Content>
+        <Img src={photo} alt="Foto de Ivanise" />
+        <Links>
           <a href="https://www.instagram.com/ivgeomaps/" target="_blank" rel="noopener noreferrer">
             <FaInstagram />
           </a>
           <a href="https://www.linkedin.com/in/izzibr/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
           </a>
-        </SocialLinks>
-        <AboutParagraph>
-          Olá! Eu sou Izzi, especialista em geoprocessamento com mais de 7 anos de experiência no setor. Minha paixão por mapas e análise espacial começou quando era jovem e se transformou em uma carreira dedicada a ajudar empresas a entenderem e utilizarem dados geoespaciais para tomadas de decisão estratégicas. Meu background em [formação acadêmica/áreas de especialização] me permite oferecer soluções inovadoras e personalizadas para seus desafios geográficos.
-        </AboutParagraph>
-        <AboutParagraph>
-          Acredito que a tecnologia de geoprocessamento deve ser acessível e aplicável a diversas indústrias, desde a construção civil até a...
-        </AboutParagraph>
-      </AboutContent>
-    </AboutSection>
+        </Links>
+        <Para>
+          Olá! Eu sou Izzi, especialista em geoprocessamento com mais de 7 anos de experiência no setor. Minha
+          paixão por mapas e análise espacial começou quando era jovem e se transformou em uma carreira dedicada a
+          ajudar empresas a entenderem e utilizarem dados geoespaciais para tomadas de decisão estratégicas.
+          Meu background em [formação acadêmica/áreas de especialização] me permite oferecer soluções inovadoras
+          e personalizadas para seus desafios geográficos.
+        </Para>
+        <Para>
+          Acredito que a tecnologia de geoprocessamento deve ser acessível e aplicável a diversas indústrias,
+          desde a construção civil até a...
+        </Para>
+      </Content>
+    </Section>
   </ThemeProvider>
 );
 

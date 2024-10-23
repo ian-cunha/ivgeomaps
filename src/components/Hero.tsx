@@ -130,7 +130,7 @@ const Hero = () => {
       <HeroSection id="home">
         <LogoImage src={logo} alt="Logo da IVGEOMAPS" />
         <HeroTitle>TRANSFORMANDO DADOS EM DECISÕES INTELIGENTES</HeroTitle>
-        <HeroSubtitle>Descubra como nossos serviços de geoprocessamento podem impulsionar seu negócio</HeroSubtitle>
+        <HeroSubtitle>Descubra como as ferramentas de geoprocessamento podem impulsionar seu projeto.</HeroSubtitle>
         <HeroButton onClick={handleWhatsAppMessage}>
           <ChatIcon /> FALE COMIGO
         </HeroButton>

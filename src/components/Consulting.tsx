@@ -6,7 +6,7 @@ const theme = {
     primary: '#2197F3',
     text: '#333',
     background: '#fafafa',
-    cardBackground: '#fff',
+    cardBg: '#fff',
     cardHover: '#f5f5f5',
     shadow: 'rgba(0, 0, 0, 0.15)',
   },
@@ -18,13 +18,13 @@ const theme = {
   },
 };
 
-const ConsultingServicesSection = styled.section`
+const Section = styled.section`
   padding: 60px 20px;
   background-color: ${props => props.theme.colors.background};
   text-align: center;
 `;
 
-const ConsultingServicesTitle = styled.h2`
+const Title = styled.h2`
   font-size: ${props => props.theme.typography.h2};
   color: ${props => props.theme.colors.primary};
   margin-bottom: 40px;
@@ -47,7 +47,7 @@ const ConsultingServicesTitle = styled.h2`
   }
 `;
 
-const ConsultingServiceGrid = styled.div`
+const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
@@ -58,11 +58,11 @@ const ConsultingServiceGrid = styled.div`
   }
 `;
 
-const ConsultingServiceCard = styled.div`
+const Card = styled.div`
   padding: 0;
   border-radius: 8px;
   overflow: hidden;
-  background-color: ${props => props.theme.colors.cardBackground};
+  background-color: ${props => props.theme.colors.cardBg};
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 12px ${props => props.theme.colors.shadow};
 
@@ -73,71 +73,67 @@ const ConsultingServiceCard = styled.div`
   }
 `;
 
-const ConsultingServiceImage = styled.img`
+const Img = styled.img`
   width: 100%;
   height: 180px;
   object-fit: cover;
 `;
 
-const ConsultingServiceContent = styled.div`
+const Content = styled.div`
   padding: 20px;
 `;
 
-const ConsultingServiceTitle = styled.h3`
+const CardTitle = styled.h3`
   font-size: ${props => props.theme.typography.h3};
   color: ${props => props.theme.colors.primary};
   margin-bottom: 10px;
 `;
 
-const ConsultingServiceDescription = styled.p`
+const Desc = styled.p`
   font-size: 1rem;
   color: ${props => props.theme.colors.text};
 `;
 
-const ConsultingServices = () => (
+const Consulting = () => (
   <ThemeProvider theme={theme}>
-    <ConsultingServicesSection id="services">
-      <ConsultingServicesTitle>Serviços de Consultoria</ConsultingServicesTitle>
-      <ConsultingServiceGrid>
-        <ConsultingServiceCard>
-          <ConsultingServiceImage src="https://via.placeholder.com/300x180" alt="Consultoria" />
-          <ConsultingServiceContent>
-            <ConsultingServiceTitle>Consultoria</ConsultingServiceTitle>
-            <ConsultingServiceDescription>
-              Oferecemos consultoria especializada para otimizar seus projetos geoespaciais.
-            </ConsultingServiceDescription>
-          </ConsultingServiceContent>
-        </ConsultingServiceCard>
-        <ConsultingServiceCard>
-          <ConsultingServiceImage src="https://via.placeholder.com/300x180" alt="Aulas Particulares" />
-          <ConsultingServiceContent>
-            <ConsultingServiceTitle>Aulas Particulares</ConsultingServiceTitle>
-            <ConsultingServiceDescription>
-              Aulas personalizadas em geoprocessamento e SIG.
-            </ConsultingServiceDescription>
-          </ConsultingServiceContent>
-        </ConsultingServiceCard>
-        <ConsultingServiceCard>
-          <ConsultingServiceImage src="https://via.placeholder.com/300x180" alt="Mapeamento" />
-          <ConsultingServiceContent>
-            <ConsultingServiceTitle>Mapeamento</ConsultingServiceTitle>
-            <ConsultingServiceDescription>
-              Criação de mapas personalizados para visualização de dados.
-            </ConsultingServiceDescription>
-          </ConsultingServiceContent>
-        </ConsultingServiceCard>
-        <ConsultingServiceCard>
-          <ConsultingServiceImage src="https://via.placeholder.com/300x180" alt="Banco de Dados" />
-          <ConsultingServiceContent>
-            <ConsultingServiceTitle>Banco de Dados para Projetos e Artigos Científicos</ConsultingServiceTitle>
-            <ConsultingServiceDescription>
-              Estruturação de bancos de dados para armazenamento e análise de dados geográficos.
-            </ConsultingServiceDescription>
-          </ConsultingServiceContent>
-        </ConsultingServiceCard>
-      </ConsultingServiceGrid>
-    </ConsultingServicesSection>
+    <Section id="services">
+      <Title>Serviços de Consultoria</Title>
+      <Grid>
+        {servicesData.map(({ imgSrc, title, desc }, index) => (
+          <Card key={index}>
+            <Img src={imgSrc} alt={title} />
+            <Content>
+              <CardTitle>{title}</CardTitle>
+              <Desc>{desc}</Desc>
+            </Content>
+          </Card>
+        ))}
+      </Grid>
+    </Section>
   </ThemeProvider>
 );
 
-export default ConsultingServices;
+const servicesData = [
+  {
+    imgSrc: 'https://via.placeholder.com/300x180',
+    title: 'Consultoria',
+    desc: 'Oferecemos consultoria especializada para otimizar seus projetos geoespaciais.',
+  },
+  {
+    imgSrc: 'https://via.placeholder.com/300x180',
+    title: 'Aulas Particulares',
+    desc: 'Aulas personalizadas em geoprocessamento e SIG. Do básico ao avançado, para você ou para a sua empresa.',
+  },
+  {
+    imgSrc: 'https://via.placeholder.com/300x180',
+    title: 'Mapeamento',
+    desc: 'Elaboração de mapas temáticos para visualização espacial de dados e para composição dos relatórios de Licenciamento Ambiental.',
+  },
+  {
+    imgSrc: 'https://via.placeholder.com/300x180',
+    title: 'Banco de Dados',
+    desc: 'Estruturação de bancos de dados para armazenamento e análise de dados geoespaciais aplicados a sua área de estudo.',
+  },
+];
+
+export default Consulting;

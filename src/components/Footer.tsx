@@ -10,35 +10,35 @@ const FooterWrapper = styled.footer`
   position: relative;
   bottom: 0;
   width: 100%;
-
+  
   @media (max-width: 768px) {
     padding: 15px 5px;
   }
 `;
 
-const FooterContent = styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const LogoImage = styled.img`
-  height: 35px; /* Ajuste o tamanho conforme necessário */
+const Logo = styled.img`
+  height: 35px;
   width: auto;
-  margin-bottom: 10px; /* Espaço abaixo da logo */
-
+  margin-bottom: 10px;
+  
   @media (max-width: 480px) {
     height: 30px;
   }
 `;
 
-const SocialIcons = styled.div`
+const Icons = styled.div`
   margin-bottom: 15px;
   display: flex;
   justify-content: center;
 `;
 
-const SocialIcon = styled.a`
+const Icon = styled.a`
   color: white;
   margin: 0 15px;
   font-size: 1.5em;
@@ -55,7 +55,7 @@ const SocialIcon = styled.a`
   }
 `;
 
-const FooterText = styled.p`
+const Text = styled.p`
   margin: 5px 0;
   font-size: 0.85em;
   opacity: 0.8;
@@ -66,21 +66,23 @@ const FooterText = styled.p`
 `;
 
 const Footer: React.FC = () => {
+  const year = new Date().getFullYear();
+
   return (
     <FooterWrapper>
-      <FooterContent>
-        <SocialIcons>
-          <SocialIcon href="https://www.linkedin.com/in/seu-linkedin" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-linkedin-in"></i>
-          </SocialIcon>
-          <SocialIcon href="https://github.com/seu-github" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-github"></i>
-          </SocialIcon>
-        </SocialIcons>
-        <LogoImage src={logo} alt="IVGEOMAPS" />
-        <FooterText>&copy; {new Date().getFullYear()} IVGEOMAPS. Todos os direitos reservados.</FooterText>
-        <FooterText>Contato: ivanise.oly@gmail.com | Telefone: (81) 99396-4043</FooterText>
-      </FooterContent>
+      <Content>
+        <Icons>
+          <Icon href="https://www.linkedin.com/in/seu-linkedin" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-linkedin-in" />
+          </Icon>
+          <Icon href="https://github.com/seu-github" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-github" />
+          </Icon>
+        </Icons>
+        <Logo src={logo} alt="IVGEOMAPS" />
+        <Text>&copy; {year} IVGEOMAPS. Todos os direitos reservados.</Text>
+        <Text>Contato: ivanise.oly@gmail.com | Telefone: (81) 99396-4043</Text>
+      </Content>
     </FooterWrapper>
   );
 };
